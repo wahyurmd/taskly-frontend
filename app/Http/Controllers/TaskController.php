@@ -116,4 +116,21 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
+
+    public function destroy($id)
+    {
+        $token = session('access_token');
+
+        if (!$token) {
+            return redirect()->route('login')->with('error', 'Please signin first.');
+        }
+
+        $response = ApiClient::delete("/tasks/{$id}", $token);
+
+        if ($response->failed()) {
+            return redirect()->route('tasks.index')->with('error', 'Failed to delete task');
+        }
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
+    }
 }

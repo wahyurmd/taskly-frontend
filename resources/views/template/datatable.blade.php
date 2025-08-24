@@ -46,7 +46,7 @@
                             <a href="/tasks/${data}/edit" class="btn btn-sm btn-primary">
                                 <i class="fas fa-edit"></i> Update
                             </a>
-                            <form action="/tasks/${data}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin hapus task ini?');">
+                            <form action="/tasks/${data}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this task?');">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-sm btn-danger">
