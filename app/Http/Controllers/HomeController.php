@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Helpers\ApiClient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,15 @@ class HomeController extends Controller
         $totalCompleted     = collect($taskList)->where('status', 1)->count();
         $totalNotCompleted  = collect($taskList)->where('status', 0)->count();
 
-        return view('dashboard', compact('tasks', 'totalTask', 'totalCompleted', 'totalNotCompleted'));
+        // Get quote of the day
+        $quoteResponse = Http::get('https://zenquotes.io/api/today');
+        $quoteData = $quoteResponse->json()[0] ?? null;
+
+        $quote  = $quoteData['q'] ?? 'Stay positive!';
+        $author = $quoteData['a'] ?? 'Unknown';
+        $today = Carbon::now()->format('l, d F Y');
+
+        return view('dashboard', compact('tasks', 'totalTask', 'totalCompleted', 'totalNotCompleted', 'quote', 'author', 'today'));
     }
 
     public function profile(Request $request)

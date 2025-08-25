@@ -30,6 +30,16 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-info text-center">
+                        <a href="https://zenquotes.io/" target="_blank"><h5><i class="fas fa-quote-left"></i> Quote of the Day</h5></a>
+                        <p class="mb-0">{{ $today }}</p>
+                        <p class="mb-0"><em>"{{ $quote }}"</em></p>
+                        <small>{{ $author }}</small>
+                    </div>
+                </div>
+            </div>
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12 col-sm-4 col-md-4">
