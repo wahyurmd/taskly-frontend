@@ -89,7 +89,7 @@
                             <h3 class="card-title">Task Calendar</h3>
                             <div class="card-tools">
                                 <select id="filterStatus" class="form-control form-control-sm">
-                                    <option value="">All</option>
+                                    <option value="">All Status</option>
                                     <option value="0">Not Completed</option>
                                     <option value="1">Completed</option>
                                 </select>
